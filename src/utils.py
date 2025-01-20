@@ -10,6 +10,7 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
         # if node.text__type is not TextType.TEXT
         if node.text__type != TextType.TEXT:
             split_nodes.append(node)
+            continue
         # check if delimiter in node.text
         while delimiter in node.text:
             normal_text, start_delimited_text = node.text.split(delimiter, 1)
