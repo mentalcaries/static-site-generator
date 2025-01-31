@@ -29,9 +29,9 @@ class TestTextNode(unittest.TestCase):
         text_node_3 = TextNode("CNet", TextType.LINK, "https://cnet.com")
 
 
-        self.assertEqual(text_node_to_html_node(text_node_1), "Test Heading 1")
-        self.assertEqual(text_node_to_html_node(text_node_2), "<b>BOLD TEXT</b>")
-        self.assertEqual(text_node_to_html_node(text_node_3), "<a href='https://cnet.com'>CNet</a>")
+        self.assertEqual(text_node_to_html_node(text_node_1).to_html(), "Test Heading 1")
+        self.assertEqual(text_node_to_html_node(text_node_2).to_html(), "<b>BOLD TEXT</b>")
+        self.assertEqual(text_node_to_html_node(text_node_3).to_html(), "<a href='https://cnet.com'>CNet</a>")
 
 
 if __name__ == "__main__":

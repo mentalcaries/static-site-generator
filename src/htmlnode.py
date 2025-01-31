@@ -9,10 +9,11 @@ class HTMLNode:
         raise NotImplementedError("Subclasses should implement this")
 
     def props_to_html(self):
+        if self.props is None:
+            return ""
         all_attributes = ""
-        if self.props:
-            for key in self.props:
-                all_attributes += f" {key}='{self.props[key]}'"
+        for key in self.props:
+            all_attributes += f" {key}='{self.props[key]}'"
         return all_attributes
     
     def __repr__(self):
@@ -46,4 +47,7 @@ class ParentNode(HTMLNode):
         output = ""
         for child_node in self.children:
             output += child_node.to_html()
-        return f"<{self.tag}>{output}</{self.tag}>"
+        return f"<{self.tag}{self.props_to_html()}>{output}</{self.tag}>"
+
+    def __repr__(self):
+        return f"ParentNode({self.tag}, children: {self.children}, {self.props})"
