@@ -2,7 +2,7 @@ import os
 import shutil
 from textnode import TextNode, TextType
 from copystatic import copy_static
-from generate_page import generate_page
+from generate_page import generate_pages_recursive
 
 source_path = "./static"
 destination_path = "./public"
@@ -14,6 +14,10 @@ def main():
         print('Public directory deleted')
     
     copy_static(source_path, destination_path)
-    generate_page('content/index.md', 'template.html', 'public/index.html')
+
+    # generate_page('content/index.md', 'template.html', 'public/index.html')
+
+
+    generate_pages_recursive('content/', 'template.html', 'public/')
 
 main()
